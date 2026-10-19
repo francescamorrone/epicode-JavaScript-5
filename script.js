@@ -65,6 +65,10 @@ const utenti = [
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+const quadrato = n => n * n;
+console.log(quadrato(5));
+
+
 /* ESERCIZIO 2 — Destructuring di oggetto
    Crea un oggetto "persona" con almeno 4 properties (es. nome, cognome, eta, città).
    Estrai 3 properties in 3 variabili usando destructuring.
@@ -72,6 +76,15 @@ const utenti = [
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const persona = {
+    nome: "Francesca",
+    cognome: "Morrone",
+    eta: 27,
+    citta: "Napoli"
+};
+
+const { nome, cognome, citta} = persona;
+console.log(nome, cognome, citta);
 
 /* ESERCIZIO 3 — Destructuring nei parametri
    Scrivi una arrow function "riepilogo" che riceve un utente e ritorna
@@ -80,6 +93,10 @@ const utenti = [
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const riepilogo = ({nome, cognome, eta}) => `${nome} ${cognome} (${eta} anni)`;
+console.log(riepilogo(utenti[0]));
+console.log(riepilogo(utenti[1]));
+console.log(riepilogo(utenti[2]));
 
 /* ESERCIZIO 4 — Spread su array
    Crea numeri = [1, 2, 3].
@@ -88,6 +105,12 @@ const utenti = [
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const numeri = [1, 2, 3];
+const copiaNumeri = [...numeri];
+copiaNumeri.push(99);
+
+console.log("Originale:", numeri);
+console.log("Copia:", copiaNumeri);
 
 /* ESERCIZIO 5 — Spread per concatenare
    frutti  = ["mela", "banana"]
