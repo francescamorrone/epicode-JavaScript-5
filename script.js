@@ -177,6 +177,8 @@ console.log(utentiPlus[0]);
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const utentiAttivi = utenti.filter((u) => u.attivo);
+console.log(utentiAttivi);
 
 /* ESERCIZIO 11 — filter combinato
    Usa filter per ottenere solo gli utenti maggiorenni (eta >= 18) che vivono a Milano.
@@ -184,6 +186,8 @@ console.log(utentiPlus[0]);
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const maggiorenniMilano = utenti.filter((u) => u.eta >= 18 && u.città === 'Milano');
+console.log(maggiorenniMilano);
 
 /* ESERCIZIO 12 — find
    Usa find per trovare il primo utente con id === 4.
@@ -191,6 +195,8 @@ console.log(utentiPlus[0]);
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const utenteId4 = utenti.find((u) => u.id === 4);
+console.log(utenteId4);
 
 /* ESERCIZIO 13 — reduce
    a) Usa reduce per calcolare l'età media (somma età / numero utenti). Stampa.
@@ -198,6 +204,13 @@ console.log(utentiPlus[0]);
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const sommaEta = utenti.reduce((acc, u) => acc + u.eta, 0);
+const mediaEta = sommaEta / utenti.length;
+console.log('Età media:', mediaEta);
+const conteggioAttivi = utenti.reduce((acc, u) => {
+    return u.attivo ? acc + 1 : acc;
+}, 0);
+console.log('Numero utenti attivi:', conteggioAttivi);
 
 /* ESERCIZIO 14 — sort
    a) Ordina gli utenti per eta crescente. Stampa l'array di nomi nell'ordine.
@@ -205,6 +218,14 @@ console.log(utentiPlus[0]);
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const utentiPerEta = [...utenti].sort((a, b) => a.eta - b.eta);
+console.log(utentiPerEta.map(u => u.nome));
+const utentiPerNome = [...utenti].sort((a, b) => {
+    if (a.nome < b.nome) return -1;
+    if (a.nome > b.nome) return 1;
+    return 0;
+});
+console.log(utentiPerNome.map(u => u.nome));
 
 /* ESERCIZIO 15 — Chaining
    Componi una catena di metodi che:
@@ -215,3 +236,9 @@ console.log(utentiPlus[0]);
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const catenaUtenti = utenti
+    .filter((u) => u.attivo)
+    .map((u) => `${u.nome} ${u.cognome}`)
+    .sort();
+
+console.log(catenaUtenti);
